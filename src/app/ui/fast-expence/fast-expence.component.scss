@@ -1,0 +1,14 @@
+@import "~styles/colors";
+
+.fast-expence-registration {
+  background: $greenColor;
+  color: #fff;
+
+  form {
+    height: 60px;
+  }
+
+  input {
+    margin-bottom: 0;
+  }
+}

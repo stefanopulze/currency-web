@@ -1,0 +1,59 @@
+<section class="container flow-col mt-20">
+  <h2>Il mio profilo</h2>
+
+  <div class="row">
+
+    <div class="col-menu">
+      <ul>
+        <li (click)="showSection('profile')">Profilo</li>
+        <li (click)="showSection('password')">Password</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <form #profileForm="ngForm" (ngSubmit)="updateProfile()" *ngIf="section === 'profile' ">
+        <div class="field">
+          <label>Nome</label>
+          <input name="name" [(ngModel)]="user.name" maxlength="45">
+        </div>
+
+        <div class="field">
+          <label>Cognome</label>
+          <input name="surname" [(ngModel)]="user.surname"  maxlength="45">
+        </div>
+
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" [(ngModel)]="user.email"  maxlength="160">
+        </div>
+
+        <footer>
+          <button type="submit" [disabled]="profileForm.form.invalid">Salva</button>
+        </footer>
+      </form>
+
+      <form #passwordForm="ngForm" (ngSubmit)="updatePassword()" *ngIf="section === 'password'">
+        <p *ngIf="passwordErrorMessage" class="info error">{{passwordErrorMessage}}</p>
+
+        <div class="field">
+          <label>Password attuale</label>
+          <input type="password" name="currentPassword" [(ngModel)]="passwords.currentPassword" maxlength="45">
+        </div>
+
+        <div class="field">
+          <label>Nuova password</label>
+          <input type="password" name="newPassword" [(ngModel)]="passwords.newPassword" maxlength="45">
+        </div>
+
+        <div class="field">
+          <label>Ripeti password</label>
+          <input type="password" name="confirmPassword" [(ngModel)]="passwords.confirmPassword" maxlength="45">
+        </div>
+
+        <button type="submit" [disabled]="passwordForm.form.invalid">Salva</button>
+      </form>
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,56 @@
+<app-fast-expence></app-fast-expence>
+
+<section class="container flow-col mt-20">
+
+  <section class="row">
+    <div class="card">
+      <div class="title">Top 5 Categorie</div>
+      <div class="content">
+        <ol>
+          <li *ngFor="let c of topCategories">
+            <span>{{c.name}}</span>
+            <span>{{c.sum}} &euro;</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="card card-white">
+      <div class="title">Ultime 10 spese</div>
+
+      <div class="content">
+        <table class="table zebra">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Valore</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let transaction of lastTransactions">
+              <td>{{transaction.created_at}}</td>
+              <td>{{transaction.value}} &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="card">
+      <div class="title">Top 5 Categorie</div>
+      <div class="content">
+        <canvas #c id="c" height="100"></canvas>
+        <ol>
+          <li *ngFor="let c of monthlyValues">
+            <span>{{c.year}}/{{c.month}}</span>
+            <span>{{c.value}} &euro;</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</section>

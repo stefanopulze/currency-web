@@ -1,0 +1,19 @@
+form, .form {
+
+
+
+}
+
+.field {
+  display: block;
+
+  label {
+    display: block;
+    margin-bottom: .3rem;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

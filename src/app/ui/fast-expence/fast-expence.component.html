@@ -1,0 +1,15 @@
+<div class="fast-expence-registration">
+  <div class="container">
+    <form #form="ngForm" class="flex toolbar" (ngSubmit)="createTransaction()">
+      <label>Registra Spesa</label>
+
+      <div>
+        <input type="number" name="value" [(ngModel)]="transaction.value" placeholder="Valore">
+        <input type="text" name="tags" [(ngModel)]="tagsAsString" placeholder="Tags">
+        <input type="text" name="description" [(ngModel)]="transaction.description" placeholder="Note">
+      </div>
+
+      <button type="submit">Registra</button>
+    </form>
+  </div>
+</div>

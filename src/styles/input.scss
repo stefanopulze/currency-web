@@ -1,0 +1,13 @@
+input {
+  font-size: 1em;
+  margin-bottom: .75rem;
+  padding: 5px;
+
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+
+  &:focus {
+    border-color: $blueColor;
+    outline: none;
+  }
+}
