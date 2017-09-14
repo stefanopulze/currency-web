@@ -8,18 +8,23 @@ export class AuthRequestOptions extends BaseRequestOptions {
   constructor(private storage: AppStorage) {
     super();
     this.attachToken();
+
+    storage.getToken().subscribe(this.attachToken.bind(this));
   }
 
-  private attachToken(): void {
+  private attachToken(token?: string): void {
     if (!this.headers) {
       this.headers = new Headers();
-    } else {
-      this.headers.delete(AUTHORIZATION_HEADER);
     }
 
-    const token = this.storage.getAuthToken();
-    if (token) {
-      this.headers.append(AUTHORIZATION_HEADER, 'Bearer ' + token);
+    if (!token) {
+      token = this.storage.getAuthToken();
+    }
+
+    if (!token) {
+      this.headers.delete(AUTHORIZATION_HEADER);
+    } else {
+      this.headers.set(AUTHORIZATION_HEADER, 'Bearer ' + token);
     }
   }
 

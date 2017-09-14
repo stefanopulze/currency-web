@@ -37,6 +37,12 @@ html, body {
   }
 }
 
+ul.reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 a, a:visited {
   color: inherit;
   text-decoration: none;
@@ -90,5 +96,28 @@ app-login {
   &.error {
     background: #fd5454;
     color: #fff;
+  }
+}
+
+.tag {
+  border: 1px solid $blueColor;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #fff;
+
+  transition: background .2s ease-in-out;
+
+  &:hover {
+    background-color: $blueColor;
+    color: #fff;
+  }
+}
+
+.tags {
+
+  .tag {
+    margin: 5px;
+    display: inline-block;
+    cursor: pointer;
   }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../model/user.model';
 import {UserService} from '../../service/user.service';
 import {AppStorage} from '../../_helpers/app-storage';
+import {Session} from "../../model/Session";
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +19,7 @@ export class ProfileComponent implements OnInit {
     confirmPassword: null
   };
   passwordErrorMessage = null;
+  sessions: Session[];
 
 
   constructor(private storage: AppStorage, private service: UserService) {
@@ -40,6 +42,10 @@ export class ProfileComponent implements OnInit {
 
   showSection(section: string) {
     this.section = section;
+
+    if (this.section === 'sessions') {
+      this.loadSessions();
+    }
   }
 
   updatePassword() {
@@ -51,6 +57,12 @@ export class ProfileComponent implements OnInit {
           this.passwordErrorMessage = error.json().message;
         }
       );
+  }
+
+  loadSessions() {
+    this.service.getSessions().subscribe(
+      sessions => this.sessions = sessions
+    );
   }
 
 }

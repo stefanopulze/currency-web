@@ -22,10 +22,13 @@ export class AuthService {
     return this.user != null && this.user.token != null;
   }
 
-  isLoggedOrLogin(): void {
+  isLoggedOrLogin(): boolean {
     if (!this.isLogged()) {
       this.navigateToLogin();
+      return false;
     }
+
+    return true;
   }
 
   login(username: String, password: String): Observable<any> {
@@ -55,10 +58,6 @@ export class AuthService {
 
   private navigateToLogin(): void {
     this.router.navigate(['/login']);
-  }
-
-  getUser(): User {
-    return this.storage.loadUser();
   }
 
 }

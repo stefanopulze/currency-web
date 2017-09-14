@@ -10,16 +10,20 @@ import {Menu} from '../../model/menu.model';
 })
 export class HeaderComponent implements OnInit {
 
-  user: User;
-  menus: Menu[] = [
+  private user: User;
+  private menus: Menu[] = [
     {title: 'Dashboard', icon: 'dashboard', link: 'dashboard'},
-    {title: 'Registra', icon: 'dashboard', link: 'expence/add'}
+    {title: 'Tags', icon: 'tags', link: 'tags'}
   ]
 
   constructor(private storage: AppStorage) { }
 
   ngOnInit() {
     this.user = this.storage.loadUser();
+    this.storage.getUser().subscribe(user => {
+      console.log('Update user');
+      this.user = user;
+    });
   }
 
 }

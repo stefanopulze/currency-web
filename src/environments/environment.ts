@@ -7,5 +7,7 @@ export const environment = {
   production: false,
 
   version: '0.1-beta',
-  endpoint: 'http://localhost:8080'
+  endpoint: 'http://localhost:8080',
+
+  googleMapsApi: 'AIzaSyBU26wm_g5ZCm72lCaQxu5zMXWsDZ9gMhQ'
 };

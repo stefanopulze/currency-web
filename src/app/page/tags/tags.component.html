@@ -1,0 +1,15 @@
+<div class="container flow-col">
+  <h1>Tags</h1>
+
+  <div class="row">
+      <ul class="reset tags">
+        <li *ngFor="let tag of tags" data-id="{{tag.id}}" class="tag" (click)="current = tag">
+          {{tag.name}}
+        </li>
+      </ul>
+  </div>
+
+  <div class="row" *ngIf="current">
+    <h2>{{current.name}}</h2>
+  </div>
+</div>

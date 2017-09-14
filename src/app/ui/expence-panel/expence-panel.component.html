@@ -1,0 +1,33 @@
+<div class="expence" [class.show]="show">
+  <div class="overflow"></div>
+
+  <div class="wrapper ovflw-y-auto">
+    <header class="container flow-col">
+      <h3>Spesa</h3>
+      <small>Registra una nuova spesa</small>
+
+      <img src="assets/icons/close.png" alt="Chiudi" (click)="close()" class="close-icon">
+    </header>
+
+    <section class="container row row-no-bottom fix-height">
+      <div>
+        <form #form="ngForm" class="form" (ngSubmit)="createTransaction()">
+          <input type="number" name="value" class="value" [(ngModel)]="transaction.value" placeholder="Valore">
+          <input type="text" name="tags" [(ngModel)]="tagsAsString" placeholder="Tags">
+
+          <textarea name="description" [(ngModel)]="transaction.description" placeholder="Note" rows="4"></textarea>
+
+          <button type="submit" [disabled]="didSave">Registra</button>
+        </form>
+      </div>
+
+      <div>
+        <input type="text" name="address" #address (change)="findAddress(address.value)" placeholder="Indirizzo">
+        <div id="map"></div>
+      </div>
+    </section>
+
+
+  </div>
+
+</div>

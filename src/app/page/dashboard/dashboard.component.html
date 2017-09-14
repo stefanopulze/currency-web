@@ -1,6 +1,36 @@
-<app-fast-expence></app-fast-expence>
+<section class="new-expence-row">
+  <div class="container">
+    <button (click)="expencePanel.open()" class="btn-transparent">Nuova uscita</button>
+  </div>
+</section>
 
 <section class="container flow-col mt-20">
+
+  <section class="row row-card">
+    <div>
+      <h2>{{lastMonthStat.value}} &euro;</h2>
+      <p>Uscite totali di questo mese</p>
+    </div>
+
+    <div>
+      <h2>{{lastMonthStat.differenceSign}} {{lastMonthStat.difference}} &euro;</h2>
+      <p>Uscite rispetto il mese precedente</p>
+    </div>
+
+    <div *ngIf="mostExpenceMonth && mostExpenceMonth.value">
+      <h2>{{mostExpenceMonth.value || 0}} &euro;</h2>
+      <p>{{mostExpenceMonth.date | month}}, il mese con più uscite</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="card">
+      <div class="title">Spese mensili</div>
+      <div class="content">
+        <canvas #c id="c" height="100"></canvas>
+      </div>
+    </div>
+  </section>
 
   <section class="row">
     <div class="card">
@@ -21,36 +51,29 @@
       <div class="content">
         <table class="table zebra">
           <thead>
-            <tr>
-              <th>Data</th>
-              <th>Valore</th>
-            </tr>
+          <tr>
+            <th>Data</th>
+            <th>Tags</th>
+            <th>Valore</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+          </tr>
           </thead>
 
           <tbody>
-            <tr *ngFor="let transaction of lastTransactions">
-              <td>{{transaction.created_at}}</td>
-              <td>{{transaction.value}} &euro;</td>
-            </tr>
+          <tr *ngFor="let transaction of lastTransactions">
+            <td>{{transaction.created_at}}</td>
+            <td>{{transaction.$tags}}</td>
+            <td>{{transaction.value}} &euro;</td>
+            <td><a (click)="expencePanel.open(transaction)">Edit</a></td>
+            <td><a (click)="removeTransasction(transaction)">Cancella</a></td>
+          </tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <section class="row">
-    <div class="card">
-      <div class="title">Top 5 Categorie</div>
-      <div class="content">
-        <canvas #c id="c" height="100"></canvas>
-        <ol>
-          <li *ngFor="let c of monthlyValues">
-            <span>{{c.year}}/{{c.month}}</span>
-            <span>{{c.value}} &euro;</span>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
 </section>
+
+<app-expence-panel #expencePanel></app-expence-panel>

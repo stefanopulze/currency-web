@@ -1,12 +1,13 @@
 import {Tag} from './tag.model';
 
-export class Transastion {
+export class Transaction {
 
   created_at: string;
   description: string;
   id: number;
-  lat: number;
-  lng: number;
+  latitude: number;
+  longitude: number;
+  accuracy: number;
   updated_at: string;
   value: number;
   tags: Tag[];

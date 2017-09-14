@@ -7,6 +7,7 @@
       <ul>
         <li (click)="showSection('profile')">Profilo</li>
         <li (click)="showSection('password')">Password</li>
+        <li (click)="showSection('sessions')">Sessioni</li>
       </ul>
     </div>
 
@@ -51,6 +52,16 @@
         </div>
 
         <button type="submit" [disabled]="passwordForm.form.invalid">Salva</button>
+      </form>
+
+      <form *ngIf="section === 'sessions'">
+        <ul>
+          <li *ngFor="let session of sessions">
+            <span>{{session.id}}</span>
+            <span>{{session.ipAddress}}</span>
+            <span>{{session.createdAt|date}}</span>
+          </li>
+        </ul>
       </form>
     </div>
 

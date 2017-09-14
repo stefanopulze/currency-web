@@ -6,6 +6,26 @@
   display: flex;
   margin-bottom: 20px;
 
+  &-card {
+    margin-top: 20px;
+    text-align: center;
+
+    h2 {
+      font-size: 2em;
+      color: #000;
+    }
+
+    > * {
+      border-right: 1px solid #ccc;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  &-no-bottom { margin-bottom: 0}
+
   & > * {
     flex: 1;
     margin-right: 20px;
@@ -16,9 +36,6 @@
   }
 }
 
-.col {
-
-}
 
 .flex {
   display: flex;
@@ -28,5 +45,19 @@
   &.toolbar {
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+.ovflw {
+  &-hidden {
+    overflow: hidden;
+  }
+
+  &-y-auto {
+    overflow-y: auto;
   }
 }

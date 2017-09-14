@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 import {User} from '../model/user.model';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../../environments/environment';
+import {Session} from '../model/Session';
 
 @Injectable()
 export class UserService {
@@ -18,6 +19,12 @@ export class UserService {
   updatePassword(password: any): Observable<any> {
     return this.http
       .put(environment.endpoint + '/user/password', password)
+      .map(data => data.json());
+  }
+
+  getSessions(): Observable<Session[]> {
+    return this.http
+      .get(environment.endpoint + '/user/sessions')
       .map(data => data.json());
   }
 

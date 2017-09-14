@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Transastion} from "../../model/transaction.model";
+import {Transaction} from "../../model/transaction.model";
 import {TransactionService} from "../../service/transaction.service";
 import {Tag} from "../../model/tag.model";
 
@@ -11,7 +11,7 @@ import {Tag} from "../../model/tag.model";
 export class FastExpenceComponent implements OnInit {
 
   tagsAsString: string;
-  transaction: Transastion = new Transastion();
+  transaction: Transaction = new Transaction();
 
   constructor(private service: TransactionService) {
   }
@@ -20,21 +20,19 @@ export class FastExpenceComponent implements OnInit {
   }
 
   createTransaction() {
-    const self = this;
-
     this.transaction.tags = this.tagsAsString
       .split(',')
-      .map(v => v.trim())
+      .map(v => v.trim().toLowerCase())
       .map(v => new Tag(v));
 
     this.service.createTransaction(this.transaction).subscribe(
-      success => this.resetTransaction.bind(self),
+      success => this.resetTransaction(),
       error => console.log(error.json())
     );
   }
 
-  private resetTransaction() {
-    this.transaction = new Transastion();
+  resetTransaction() {
+    this.transaction = new Transaction();
     this.tagsAsString = '';
   }
 

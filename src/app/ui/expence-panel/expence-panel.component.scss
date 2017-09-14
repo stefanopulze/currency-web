@@ -1,0 +1,65 @@
+@import "~styles/colors";
+
+$wrapperWidth: 500px;
+
+.expence {
+  overflow: hidden;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+
+    .overflow {
+      opacity: 1;
+    }
+
+    .wrapper {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .overflow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.5);
+    transition: opacity .3s ease-in;
+    opacity: 0;
+  }
+
+  .wrapper {
+    background: #fff;
+    position: fixed;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    border-top: 5px solid $greenColor;
+
+    transition: all .3s ease-in;
+    transform: translateY(200px);
+    opacity: .5;
+  }
+
+  #map {
+    height: calc(100% - 41px);
+  }
+}
+
+.fix-height {
+  height: calc(100vh - 124px);
+}
+
+.value {
+  font-size: 2em;
+}
+
+.close-icon {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  opacity: .2;
+  cursor: pointer;
+}

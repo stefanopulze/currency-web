@@ -13,8 +13,17 @@ button {
     padding-right: 5px;
   }
 
+  &:disabled {
+    background: #ccc;
+    cursor: no-drop;
+  }
+
   &:hover,
   &:focus {
     background: darken($blueColor, 5%);
   }
+}
+
+.btn-transparent {
+  background: inherit;
 }
