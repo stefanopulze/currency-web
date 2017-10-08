@@ -6,4 +6,51 @@
   background: $greenColor;
   padding: 5px;
   box-sizing: border-box;
+
+  button {
+    text-transform: uppercase;
+  }
+}
+
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+  //and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+  .new-expence-row button {
+    width: 100%;
+
+  }
+}
+
+.box-color {
+  width: 30px;
+  height: 10px;
+  display: inline-block;
+}
+
+.top5list {
+  margin-top: 20px;
+
+  li {
+    display: flex;
+    border-bottom: 1px solid $primaryBorderColor;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+
+    .box-name {
+      flex: 1;
+      margin-left: 10px;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.atag {
+  font-weight: bold;
+  margin-right: 10px;
 }

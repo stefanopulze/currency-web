@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {ErrorHandler, NgModule} from '@angular/core';
+import {ErrorHandler, LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, RequestOptions} from '@angular/http';
 
@@ -20,6 +20,7 @@ import {TransactionService} from './service/transaction.service';
 import {ExpencePanelComponent} from './ui/expence-panel/expence-panel.component';
 import { MonthPipe } from './pipe/month.pipe';
 import { TagsComponent } from './page/tags/tags.component';
+import { EuroPipe } from './pipe/euro.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TagsComponent } from './page/tags/tags.component';
     FastExpenceComponent,
     ExpencePanelComponent,
     MonthPipe,
-    TagsComponent
+    TagsComponent,
+    EuroPipe
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { TagsComponent } from './page/tags/tags.component';
     TagService,
     TransactionService,
     { provide: ErrorHandler,  useClass: GlobalErrorHandler },
+    { provide: LOCALE_ID, useValue: 'it-IT'},
     {
       provide: RequestOptions,
       deps: [AppStorage],
